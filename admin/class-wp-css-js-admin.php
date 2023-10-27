@@ -21,6 +21,7 @@ class wp_css_js_Admin {
 
 		add_action( 'init', array( $this, 'init' ), 20 );
 		add_action( 'admin_head', array( $this, 'css' ) );
+
 	}
 
 	function enqueue_styles() {
@@ -68,6 +69,9 @@ class wp_css_js_Admin {
 	 * Adds the meta box container.
 	 */
 	public function add_meta_box( $post_type ) {
+		if ( !current_user_can( 'manage_options' ) ) {
+			return;
+		}
 		$dont_include = array( 'revision', 'attachment', 'nav_menu_item' );
 		if ( ! in_array( $post_type, $dont_include ) ) {
 			add_meta_box(

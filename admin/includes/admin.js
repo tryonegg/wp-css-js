@@ -106,37 +106,38 @@ var WPCSSJS = function () {
 
 	var css = wp.codeEditor.initialize( jQuery( '#wp-css-js-css' ), {
 		mode: "text/css",
-		//theme: "monokai",
 		lineNumbers: true,
 		styleActiveLine: true,
 		matchBrackets: true,
-		// gutters: ["CodeMirror-lint-markers", "CodeMirror-linenumbers", "CodeMirror-foldgutter"],
 		lint: true,
 		foldGutter: true,
 	} );
 	css.codemirror.on( 'change', editor => {
 		css.codemirror.save();
 	} )
-	css.codemirror.refresh();
+	setTimeout(fn => {
+		css.codemirror.refresh();
+	},100);
 
 
 	// set up the Javascript editor
 	var javascript = wp.codeEditor.initialize( jQuery( '#wp-css-js-javascript' ), {
 		mode: "javascript",
-		//theme: "monokai",
 		lineNumbers: true,
 		styleActiveLine: true,
 		matchBrackets: true,
-		// gutters: ["CodeMirror-lint-markers", "CodeMirror-linenumbers", "CodeMirror-foldgutter"],
 		lint: true,
 		foldGutter: true,
 	} );
 
 	javascript.codemirror.on( 'change', editor => {
 		javascript.codemirror.save();
-	} )
+	} );
+	setTimeout(fn => {
+		javascript.codemirror.refresh();
+	},100);
 
-	javascript.codemirror.refresh();
+
 
 	//save back to a custom field
 	function save() {

@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: WP CSS & JS Editor
-Version: 1.1
+Version: 1.2
 Plugin URI:
 Description: Adds a css and js editor to each post, page & custom posts
 Author: Tryon Eggleston
