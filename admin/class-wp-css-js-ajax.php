@@ -6,23 +6,23 @@ class wp_css_js_ajax {
 
 	private function __construct() {
 
-		$plugin = wp_css_js::get_instance();
-		$this->version = wp_css_js::VERSION;
+		$plugin            = wp_css_js::get_instance();
+		$this->version     = wp_css_js::VERSION;
 		$this->plugin_slug = $plugin->get_plugin_slug();
 
-		add_action('wp_ajax_wpcssjssave', array( $this, 'save' ));
+		add_action( 'wp_ajax_wpcssjssave', array( $this, 'save' ) );
 	}
 
 	public static function get_instance() {
 		// If the single instance hasn't been set, set it now.
 		if ( null == self::$instance ) {
-			self::$instance = new self;
+			self::$instance = new self();
 		}
 
 		return self::$instance;
-	}	
+	}
 
-	public function save( ) {
+	public function save() {
 
 		check_ajax_referer( $this->plugin_slug . 'ajax_nonce', 'security' );
 
@@ -33,8 +33,9 @@ class wp_css_js_ajax {
 
 		// CSS files
 		$cssfiles = $_POST[ $this->plugin_slug . '-cssfiles' ];
+
 		// Update the meta field.
-		if($cssfiles){
+		if ( $cssfiles ) {
 			update_post_meta( $_POST['postid'], '_' . $this->plugin_slug . '-cssfiles', $cssfiles );
 		} else {
 			delete_post_meta( $_POST['postid'], '_' . $this->plugin_slug . '-cssfiles' );
@@ -47,18 +48,18 @@ class wp_css_js_ajax {
 
 		// CSS files
 		$javascriptfiles = $_POST[ $this->plugin_slug . '-javascriptfiles' ];
+
 		// Update the meta field.
-		if($javascriptfiles){
+		if ( $javascriptfiles ) {
 			update_post_meta( $_POST['postid'], '_' . $this->plugin_slug . '-javascriptfiles', $javascriptfiles );
 		} else {
 			delete_post_meta( $_POST['postid'], '_' . $this->plugin_slug . '-javascriptfiles' );
 		}
-		
-		if($javascript && $css){
-			die(true);
-		} else{
-			die(false);
+
+		if ( $javascript && $css ) {
+			die( true );
+		} else {
+			die( false );
 		}
 	}
-
 }

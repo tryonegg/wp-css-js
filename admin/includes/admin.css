@@ -1,15 +1,21 @@
 #wp-css-jseditor {
-  transition: background 0.5s; }
-  #wp-css-jseditor.saved {
-    background: yellow; }
-  #wp-css-jseditor textarea {
-    width: 100%;
-    height: 15em;
-    clear: both; }
-  #wp-css-jseditor .wp-css-js-cssfiles {
-    list-style: disc;
-    padding: 0 0 0 2em; }
-  #wp-css-jseditor button {
-    margin-left: 1em; }
-  #wp-css-jseditor .CodeMirror {
-    border: 1px solid #dddddd; }
+	transition: background 0.5s;
+}
+#wp-css-jseditor.saved {
+	background: yellow;
+}
+#wp-css-jseditor textarea {
+	width: 100%;
+	height: 15em;
+	clear: both;
+}
+#wp-css-jseditor .wp-css-js-cssfiles {
+	list-style: disc;
+	padding: 0 0 0 2em;
+}
+#wp-css-jseditor button {
+	margin-left: 1em;
+}
+#wp-css-jseditor .CodeMirror {
+	border: 1px solid #dddddd;
+}
